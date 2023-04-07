@@ -73,5 +73,6 @@ object FirstPrinciples extends App {
   val limitFlow = Flow[String].take(2)
   val nameSink = Sink.foreach[String](println)
 
-  nameSource.via(longNameFlow).via(limitFlow).to(nameSink).run()
+//  nameSource.via(longNameFlow).via(limitFlow).to(nameSink).run()
+  Source(names).filter(_.length > 5).take(2).runForeach(println)
 }
